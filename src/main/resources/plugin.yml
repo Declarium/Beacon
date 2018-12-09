@@ -1,0 +1,6 @@
+name: Beacon
+description: ${project.description}
+version: ${project.version}
+author: Declarium
+main: com.declarium.beacon.SingularPlugin
+load: STARTUP
