@@ -26,10 +26,10 @@ public final class ItemBuilder {
     }
 
     public ItemBuilder setType(Material material) {
-        this.item.setType(Objects.requireNonNull(material));
+        this.item.setType(material);
         return this;
     }
-
+    
     public ItemBuilder setAmount(int amount) {
         this.item.setAmount(amount);
         return this;
