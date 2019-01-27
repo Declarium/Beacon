@@ -1,16 +1,19 @@
 package com.declarium.beacon.util;
 
 import java.util.List;
-import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import org.bukkit.ChatColor;
 
-public final class ChatUtil {
+/**
+ * Utilities to simplify the color formatting of
+ * messages via {@link ChatColor}.
+ *
+ * @author Jay Carr
+ * @version 1.0
+ */
+public final class ColorUtil {
 
-    private static final Pattern IP_PATTERN = Pattern.compile("^((0|1\\\\d?\\\\d?|2[0-4]?\\\\d?|" +
-            "25[0-5]?|[3-9]\\\\d?)\\\\.){3}(0|1\\\\d?\\\\d?|2[0-4]?\\\\d?|25[0-5]?|[3-9]\\\\d?)$");
-
-    private ChatUtil() {
+    private ColorUtil() {
         throw new AssertionError("Cannot instantiate this class.");
     }
 
@@ -20,7 +23,7 @@ public final class ChatUtil {
 
     public static List<String> useColor(List<String> input) {
         return input.stream()
-                .map(ChatUtil::useColor)
+                .map(ColorUtil::useColor)
                 .collect(Collectors.toList());
     }
 }

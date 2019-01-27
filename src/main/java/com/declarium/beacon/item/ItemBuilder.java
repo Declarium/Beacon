@@ -1,5 +1,6 @@
 package com.declarium.beacon.item;
 
+import com.declarium.beacon.util.ColorUtil;
 import java.util.List;
 import java.util.Objects;
 import java.util.function.Consumer;
@@ -9,6 +10,13 @@ import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
+/**
+ * A builder to simplify the creation of Bukkit
+ * {@link ItemStack} instances.
+ *
+ * @author Jay Carr
+ * @version 1.0
+ */
 public final class ItemBuilder {
 
     private final ItemStack item;
@@ -29,7 +37,7 @@ public final class ItemBuilder {
         this.item.setType(material);
         return this;
     }
-    
+
     public ItemBuilder setAmount(int amount) {
         this.item.setAmount(amount);
         return this;
@@ -41,11 +49,11 @@ public final class ItemBuilder {
     }
 
     public ItemBuilder setName(String name) {
-        return this.adjustMeta(meta -> meta.setDisplayName(name));
+        return this.adjustMeta(meta -> meta.setDisplayName(ColorUtil.useColor(name)));
     }
 
     public ItemBuilder setLore(List<String> lore) {
-        return this.adjustMeta(meta -> meta.setLore(lore));
+        return this.adjustMeta(meta -> meta.setLore(ColorUtil.useColor(lore)));
     }
 
     public ItemBuilder setUnbreakable(boolean unbreakable) {
