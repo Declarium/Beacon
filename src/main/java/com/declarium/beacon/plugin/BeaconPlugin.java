@@ -58,12 +58,12 @@ public abstract class BeaconPlugin extends JavaPlugin implements Plugin {
     public void disable() {}
 
     @Override
-    public void onLoad() {
+    public final void onLoad() {
         this.load();
     }
 
     @Override
-    public void onEnable() {
+    public final void onEnable() {
         if (this.defaultConfig) {
             this.saveDefaultConfig();
         }
@@ -72,7 +72,7 @@ public abstract class BeaconPlugin extends JavaPlugin implements Plugin {
     }
 
     @Override
-    public void onDisable() {
+    public final void onDisable() {
         this.disable();
     }
 
