@@ -10,8 +10,8 @@ import org.bukkit.command.CommandSender;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.AbstractMap;
+import java.util.HashMap;
 import java.util.Map;
-import java.util.TreeMap;
 
 /**
  * A default implementation of {@link CommandRegistry}.
@@ -21,7 +21,7 @@ import java.util.TreeMap;
  */
 public final class DefaultCommandRegistry implements CommandRegistry, CommandExecutor {
 
-    private final Map<String, Map.Entry<Command, Method>> commands = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
+    private final Map<String, Map.Entry<Command, Method>> commands = new HashMap<>();
 
     @Override
     public void register(Object object) {
@@ -37,13 +37,13 @@ public final class DefaultCommandRegistry implements CommandRegistry, CommandExe
             }
 
             Bukkit.getServer().getPluginCommand(command.name()).setExecutor(this);
-            this.commands.put(command.name(), new AbstractMap.SimpleEntry<>(command, method));
+            this.commands.put(command.name().toLowerCase(), new AbstractMap.SimpleEntry<>(command, method));
         }
     }
 
     @Override
     public boolean execute(CommandSender sender, org.bukkit.command.Command command, String name, String[] args) {
-        Map.Entry<Command, Method> entry = this.commands.get(name);
+        Map.Entry<Command, Method> entry = this.commands.get(name.toLowerCase());
 
         // Command does not have a handling method within this command executor
         if (entry == null) {
