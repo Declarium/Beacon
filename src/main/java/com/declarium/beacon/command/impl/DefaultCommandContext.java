@@ -16,7 +16,7 @@ public final class DefaultCommandContext implements CommandContext {
     private final String[] args;
     private final String label;
 
-    private DefaultCommandContext(CommandSender sender, String[] args, String label) {
+    public DefaultCommandContext(CommandSender sender, String[] args, String label) {
         this.sender = sender;
         this.args = args;
         this.label = label;
